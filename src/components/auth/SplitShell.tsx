@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react'
 import { Check } from 'lucide-react'
-import { Logo } from '@/components/brand/Logo'
 
 interface SplitShellProps {
   /** Rótulo acima do título (ex.: "Plataforma B2B") */
@@ -38,7 +37,7 @@ export function SplitShell({ eyebrow, title, description, features, children }: 
         <div className="pointer-events-none absolute right-[-120px] top-1/2 hidden h-[360px] w-[360px] -translate-y-1/2 rounded-full border-2 border-primary/20 lg:block" />
 
         <div className="relative z-10">
-          <Logo variant="dark" size="md" />
+          <img src="/logo-white.png" alt="VerticalParts" className="h-9 object-contain" />
         </div>
 
         <div className="relative z-10">

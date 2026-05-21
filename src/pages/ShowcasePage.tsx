@@ -5,7 +5,6 @@ import {
   ExternalLink, Palette, Type, MousePointerClick,
   Tag, LayoutTemplate, KeyRound,
 } from 'lucide-react'
-import { Logo } from '@/components/brand/Logo'
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
 import { Card, CardHeader, CardTitle } from '@/components/ui/Card'
@@ -56,7 +55,7 @@ export default function ShowcasePage({ embedded = false }: ShowcasePageProps) {
       {!embedded && (
         <div className="mb-12">
           <div className="mb-6 flex items-center justify-between">
-            <Logo variant="light" size="lg" />
+            <img src="/logo-color.png" alt="VerticalParts" className="h-10 object-contain" />
             <div className="flex gap-3">
               <Link to="/login">
                 <Button variant="outline" size="sm">Login</Button>

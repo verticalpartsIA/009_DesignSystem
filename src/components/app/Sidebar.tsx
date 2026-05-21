@@ -1,7 +1,6 @@
 import { useState, type ElementType } from 'react'
 import { NavLink } from 'react-router-dom'
 import { ChevronLeft, ChevronRight, LogOut } from 'lucide-react'
-import { Logo } from '@/components/brand/Logo'
 import { useAuth, type Profile } from '@/lib/auth'
 import { cn } from '@/lib/utils'
 
@@ -56,7 +55,7 @@ export function Sidebar({ navItems, collapsed: controlledCollapsed, onToggle }: 
       <div className={cn('flex items-center border-b border-surface-border px-4 py-5', collapsed && 'justify-center px-0')}>
         {collapsed
           ? <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary"><span className="text-[11px] font-black text-black">VP</span></div>
-          : <Logo variant="dark" size="sm" />}
+          : <img src="/logo-white.png" alt="VerticalParts" className="h-7 object-contain" />}
       </div>
 
       {/* Navegação */}

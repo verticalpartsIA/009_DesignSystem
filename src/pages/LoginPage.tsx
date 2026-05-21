@@ -46,7 +46,7 @@ export default function LoginPage() {
       title={<>Bem-vindo<br />de volta à <span className="text-primary">VerticalParts.</span></>}
       description="Acesse dashboards, estoque e relatórios técnicos em um só lugar."
       features={[
-        'Mais de 4.000 SKUs catalogados',
+        'Vendas, Compras, Engenharia, Financeiro e mais',
         'Integração com vpsistema — SSO automático',
         'Controle de acesso por cargo e departamento',
       ]}

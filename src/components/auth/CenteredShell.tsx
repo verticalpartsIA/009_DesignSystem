@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import { Logo } from '@/components/brand/Logo'
 
 /**
  * Layout centralizado: fundo escuro com card branco ao centro.
@@ -27,7 +26,7 @@ export function CenteredShell({ children }: { children: ReactNode }) {
         style={{ boxShadow: '0 30px 80px rgba(0,0,0,0.5)' }}
       >
         <div className="mb-7 flex justify-center">
-          <Logo variant="light" size="md" />
+          <img src="/logo-color.png" alt="VerticalParts" className="h-8 object-contain" />
         </div>
         {children}
       </div>
