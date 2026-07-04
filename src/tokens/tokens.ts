@@ -36,7 +36,7 @@ export const colors = {
 } as const
 
 export const typography = {
-  fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+  fontFamily: "Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
   weights: { regular: 400, medium: 500, semibold: 600, bold: 700, extrabold: 800 },
   sizes: {
     xs:  '0.75rem',   // 12px — labels, badges

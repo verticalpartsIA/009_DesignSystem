@@ -23,7 +23,7 @@
 
 Este repositório é o **ponto de partida obrigatório** para qualquer novo sistema interno da VerticalParts. Ele entrega:
 
-- **Identidade visual consistente** — cor `#F5C400` (dourado oficial), tipografia Inter, espaçamentos e sombras padronizados
+- **Identidade visual consistente** — cor `#F5C400` (dourado oficial), tipografia Poppins, espaçamentos e sombras padronizados
 - **Autenticação real** — Supabase Auth com email/senha + SSO automático via `vpsistema`
 - **Biblioteca de componentes** — Button, Badge, Card, KpiCard, Field, FormHead, AppShell, Sidebar prontos
 - **Layouts de autenticação** — SplitShell (login/cadastro) e CenteredShell (recuperar/redefinir senha)
@@ -171,6 +171,14 @@ Definidos em `src/tokens/tokens.ts` e expostos via `tailwind.config.js`.
 | `warning`  | `#f59e0b`   |
 | `danger`   | `#ef4444`   |
 | `info`     | `#3b82f6`   |
+
+### Tipografia
+
+Fonte oficial da VerticalParts: **Poppins** (Google Fonts), carregada em `index.html` e definida como `font-sans` em `tailwind.config.js` / `typography.fontFamily` em `src/tokens/tokens.ts`.
+
+```css
+font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+```
 
 ---
 
