@@ -42,6 +42,24 @@ Todo projeto novo criado a partir deste template precisa responder essa pergunta
 
 Se você é uma IA lendo esta documentação para iniciar um projeto: **pergunte isso ao usuário antes de prosseguir**. Instruções completas de cada caminho estão em [`CLAUDE.md`](./CLAUDE.md).
 
+> **Importante:** essa resposta muda só o modelo de acesso. Em **ambos** os casos, o projeto Supabase de autenticação/usuários é sempre o mesmo — ver seção abaixo.
+
+---
+
+## 🔑 O Supabase de usuários é sempre o mesmo, com ou sem card
+
+Não importa se o site vai ter card no vpsistema ou endereço próprio: **a base de usuários da VerticalParts é única**, dentro do projeto Supabase do próprio `vpsistema`:
+
+```
+https://ubdkoqxfwcraftesgmbw.supabase.co
+```
+
+**Por quê:** quem cadastra colaboradores é sempre o `001_vpsistema` — o Administrador convida um novo usuário por lá (Admin → "+ Convidar" → Edge Function `invite-user`), o que cria o registro no Supabase Auth **e** na tabela `profiles` desse projeto único. Nenhum sistema novo cria seu próprio cadastro de usuário. Então, seja o novo site aninhado via SSO ou acessado direto pelo endereço próprio, os colaboradores que vão logar nele já existem (ou serão criados via convite do vpsistema) nesse mesmo Supabase.
+
+Isso significa que o `.env` de **qualquer** projeto criado a partir deste template deve apontar para esse mesmo projeto (chaves em `.env.example`) — o que muda entre "card no vpsistema" e "endereço próprio" é apenas se o login usa SSO automático (`signInWithSSO`) ou email/senha manual (`signIn`); as duas formas consultam a mesma tabela `profiles`.
+
+Tabelas de **dados de negócio** próprias do novo sistema (não relacionadas a identidade do usuário) podem, se necessário, viver em outro projeto Supabase dedicado — mas autenticação e cadastro de colaborador são sempre centralizados no Supabase do vpsistema.
+
 ---
 
 ## Início rápido
