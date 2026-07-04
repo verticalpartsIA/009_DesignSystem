@@ -99,13 +99,6 @@ export default function LoginPage() {
         <Button type="submit" size="lg" loading={loading} rightIcon={<ArrowRight className="h-4 w-4" />} className="w-full">
           Entrar
         </Button>
-
-        <p className="mt-6 text-center text-[13px] text-neutral-700">
-          Não tem uma conta?{' '}
-          <Link to="/register" className="border-b-2 border-primary pb-px font-bold text-black hover:text-primary-dark transition-colors">
-            Cadastrar
-          </Link>
-        </p>
       </form>
     </SplitShell>
   )

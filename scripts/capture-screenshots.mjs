@@ -15,12 +15,6 @@ await page.waitForTimeout(500)
 await page.screenshot({ path: `${OUT}/login.png` })
 console.log('✓ login.png')
 
-// Register page
-await page.goto(`${BASE}/register`, { waitUntil: 'networkidle', timeout: 10000 })
-await page.waitForTimeout(500)
-await page.screenshot({ path: `${OUT}/register.png` })
-console.log('✓ register.png')
-
 // Forgot password page
 await page.goto(`${BASE}/forgot-password`, { waitUntil: 'networkidle', timeout: 10000 })
 await page.waitForTimeout(500)

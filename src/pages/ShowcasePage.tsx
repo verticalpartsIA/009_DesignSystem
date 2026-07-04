@@ -58,10 +58,7 @@ export default function ShowcasePage({ embedded = false }: ShowcasePageProps) {
             <img src="/logo-color.png" alt="VerticalParts" className="h-10 object-contain" />
             <div className="flex gap-3">
               <Link to="/login">
-                <Button variant="outline" size="sm">Login</Button>
-              </Link>
-              <Link to="/register">
-                <Button size="sm" rightIcon={<ArrowRight className="h-3.5 w-3.5" />}>Cadastrar</Button>
+                <Button size="sm" rightIcon={<ArrowRight className="h-3.5 w-3.5" />}>Login</Button>
               </Link>
             </div>
           </div>
@@ -227,10 +224,9 @@ export default function ShowcasePage({ embedded = false }: ShowcasePageProps) {
       {/* ── 8. LINKS RÁPIDOS ──────────────────────────────────────── */}
       {!embedded && (
         <Section id="paginas" icon={ExternalLink} title="Páginas de Autenticação">
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {[
               { label: 'Login',         href: '/login'           },
-              { label: 'Cadastro',      href: '/register'        },
               { label: 'Esqueci senha', href: '/forgot-password' },
               { label: 'Nova senha',    href: '/reset-password'  },
             ].map(({ label, href }) => (

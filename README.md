@@ -26,7 +26,7 @@ Este repositório é o **ponto de partida obrigatório** para qualquer novo sist
 - **Identidade visual consistente** — cor `#F5C400` (dourado oficial), tipografia Poppins, espaçamentos e sombras padronizados
 - **Autenticação real** — Supabase Auth com email/senha + SSO automático via `vpsistema`
 - **Biblioteca de componentes** — Button, Badge, Card, KpiCard, Field, FormHead, AppShell, Sidebar prontos
-- **Layouts de autenticação** — SplitShell (login/cadastro) e CenteredShell (recuperar/redefinir senha)
+- **Layouts de autenticação** — SplitShell (login) e CenteredShell (recuperar/redefinir senha)
 - **Catálogo visual interativo** — acesse `/showcase` para ver todos os componentes em uso
 
 ---
@@ -83,7 +83,8 @@ npm run dev
 Acesse:
 - `http://localhost:5173/showcase` — catálogo de componentes
 - `http://localhost:5173/login` — tela de login
-- `http://localhost:5173/register` — tela de cadastro
+
+> **Não existe tela de cadastro (`/register`).** Removida de propósito — usuário da VerticalParts só nasce via convite no `001_vpsistema` (ver seção acima). Nenhum sistema deve ter autocadastro próprio.
 
 ---
 
@@ -93,9 +94,6 @@ Acesse:
 > Layout dividido: painel escuro (marca) + formulário branco. Detecta SSO automático do `vpsistema`.
 
 <img src="docs/images/login.png" alt="Tela de login" width="100%" />
-
-### Cadastro
-<img src="docs/images/register.png" alt="Tela de cadastro" width="100%" />
 
 ### Recuperar senha
 <img src="docs/images/forgot-password.png" alt="Tela de recuperar senha" width="600" />
@@ -147,7 +145,7 @@ src/
 │   │   └── Logo.tsx           ← Logo VerticalParts (variantes dark/light, tamanhos sm/md/lg)
 │   │
 │   ├── auth/
-│   │   ├── SplitShell.tsx     ← Layout dividido escuro/branco (login e cadastro)
+│   │   ├── SplitShell.tsx     ← Layout dividido escuro/branco (login)
 │   │   ├── CenteredShell.tsx  ← Layout card centralizado sobre fundo escuro (recuperar senha)
 │   │   ├── Field.tsx          ← Campo de formulário com label, ícone, toggle de senha e estados
 │   │   └── FormHead.tsx       ← Cabeçalho padrão dos formulários de auth
@@ -165,7 +163,6 @@ src/
 │
 └── pages/
     ├── LoginPage.tsx          ← Login email/senha + detecção de SSO automático
-    ├── RegisterPage.tsx       ← Cadastro com validação e medidor de senha
     ├── ForgotPasswordPage.tsx ← Solicitar link de redefinição via Supabase
     ├── ResetPasswordPage.tsx  ← Redefinir senha com medidor de força
     ├── DashboardPage.tsx      ← Exemplo de rota protegida com AppShell
@@ -329,6 +326,20 @@ O portal `vpsistema` injeta tokens na URL ao abrir um subsistema:
 https://meuapp.verticalparts.com/login?sso_token=...&sso_refresh=...
 ```
 O `LoginPage` detecta e processa automaticamente — o colaborador não precisa fazer nada.
+
+### 3. Esqueci minha senha
+`LoginPage` tem o link "Esqueceu a senha?" → `ForgotPasswordPage` (`/forgot-password`) chama `supabase.auth.resetPasswordForEmail()`, o colaborador recebe e-mail e define a senha em `ResetPasswordPage` (`/reset-password`). Já pronto neste template, nenhuma configuração extra é necessária no código.
+
+### O "rosto" dos e-mails (convite + recuperação de senha)
+O visual dos e-mails que o colaborador recebe (convite do `invite-user` e recuperação de senha) é configurado centralmente no Supabase do vpsistema, **não** no código deste template:
+
+```
+https://supabase.com/dashboard/project/ubdkoqxfwcraftesgmbw/auth/templates
+```
+
+Como o Supabase de usuários é sempre o mesmo (`ubdkoqxfwcraftesgmbw`, ver seção acima), esse template de e-mail vale para **todos** os sistemas VerticalParts — mudar o visual lá afeta o convite e a recuperação de senha de todo o ecossistema, não só de um projeto.
+
+> ⚠️ Atenção ao usar o fluxo padrão do Supabase (`resetPasswordForEmail`) — o `001_vpsistema` precisou customizar seu próprio fluxo de recuperação (edge function `send-recovery-email`, envio de **código OTP** em vez de link) porque o Outlook/Microsoft Safe Links faz prefetch do link e invalida o token antes do colaborador clicar. Se isso voltar a acontecer em um sistema novo, replicar a mesma solução do vpsistema em vez de reinventar.
 
 ### Verificação de conta ativa
 ```tsx

@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from '@/lib/auth'
 import { Loader2 } from 'lucide-react'
 import LoginPage          from '@/pages/LoginPage'
-import RegisterPage       from '@/pages/RegisterPage'
 import ForgotPasswordPage from '@/pages/ForgotPasswordPage'
 import ResetPasswordPage  from '@/pages/ResetPasswordPage'
 import ShowcasePage       from '@/pages/ShowcasePage'
@@ -32,7 +31,6 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/login"           element={<GuestRoute><LoginPage /></GuestRoute>} />
-      <Route path="/register"        element={<GuestRoute><RegisterPage /></GuestRoute>} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/reset-password"  element={<ResetPasswordPage />} />
       <Route path="/showcase"        element={<ShowcasePage />} />
