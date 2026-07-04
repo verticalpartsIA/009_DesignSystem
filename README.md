@@ -31,6 +31,19 @@ Este repositório é o **ponto de partida obrigatório** para qualquer novo sist
 
 ---
 
+## ⚠️ Antes de começar: este site vai ter card no vpsistema.com?
+
+Todo projeto novo criado a partir deste template precisa responder essa pergunta **antes** de qualquer código:
+
+> **Este site vai precisar de um card em vpsistema.com** (usuário entra por vpsistema.com, vê o card e clica para acessar via SSO) **ou vai ter endereço próprio** (usuário acessa direto, sem passar pelo vpsistema)?
+
+- **Se for card no vpsistema** → o login principal é SSO automático (`signInWithSSO`, já pronto neste template) e é preciso cadastrar o site na tabela `modules` do Supabase do `001_vpsistema`.
+- **Se for endereço próprio** → login normal por email/senha (`signIn`), sem cadastro nenhum no vpsistema.
+
+Se você é uma IA lendo esta documentação para iniciar um projeto: **pergunte isso ao usuário antes de prosseguir**. Instruções completas de cada caminho estão em [`CLAUDE.md`](./CLAUDE.md).
+
+---
+
 ## Início rápido
 
 ```bash
@@ -333,6 +346,9 @@ VITE_SUPABASE_ANON_KEY=eyJ...
 ## Como criar um novo projeto a partir deste template
 
 ```bash
+# 0. Defina antes de tudo: este projeto terá card no vpsistema.com (SSO)
+#    ou endereço próprio (login direto)? Ver seção acima e CLAUDE.md.
+
 # 1. Clone e renomeie
 git clone https://github.com/verticalpartsIA/vp-design-system.git nome-do-projeto
 cd nome-do-projeto
