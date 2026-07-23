@@ -52,6 +52,7 @@ O site fica "pendurado" no vpsistema.com. O usuário sempre entra por lá primei
   (ver lista de ícones Lucide disponíveis e exemplos completos no README do `001_vpsistema`)
 - O domínio do novo site deve estar sob `*.vpsistema.com` (ou `*.verticalparts.com`) — são os domínios com SSO habilitado.
 - A tela de login por email/senha continua existindo como fallback, mas o fluxo esperado no dia a dia é sempre entrar via card no vpsistema.
+- **Implementar a "tela de entrada"**: no momento de `loading` do `AuthProvider` (antes de decidir se mostra o app), mostrar a tela de entrada com vídeo da marca em vez de um spinner genérico — substitui a tela de login como primeira experiência, já que o acesso é 100% via SSO. Instruções completas, código pronto e o vídeo da marca estão em [`tela de entrada/INSTRUCOES.md`](./tela%20de%20entrada/INSTRUCOES.md).
 
 ## Se a resposta for NÃO — site com endereço próprio
 
@@ -60,6 +61,19 @@ O site **não** aparece no vpsistema. O usuário acessa direto pela URL do siste
 - **Não** criar/inserir linha na tabela `modules` do vpsistema para esse site.
 - O login é 100% via email/senha (`signIn()` em `src/lib/auth.tsx`), sem depender de `signInWithSSO()` — mas ainda contra o **mesmo** Supabase `ubdkoqxfwcraftesgmbw` (ver seção acima), já que o usuário já existe lá.
 - A identidade visual (cores, tipografia, componentes deste template) continua sendo usada normalmente — a decisão SIM/NÃO afeta **apenas** o modelo de acesso (SSO automático vs. login manual), nunca a base visual nem a base de usuários.
+
+---
+
+## Em qualquer um dos dois casos: implementar o aviso de atualização
+
+Independente de SSO ou endereço próprio, **todo projeto novo** precisa do
+aviso que detecta quando uma versão nova foi publicada (evita aba aberta
+rodando código antigo por horas depois de um deploy) — toast com botão
+"Atualizar agora" + linha "Última atualização: DD/MM/AA HH:MMh" no rodapé
+da Sidebar. Código completo e lições aprendidas (evitar o aviso "loopar"
+entre abas, gerar `version.json` a partir do mecanismo de deploy real) em
+[`tela de entrada/INSTRUCOES.md`](./tela%20de%20entrada/INSTRUCOES.md),
+seção "Aviso de Atualização".
 
 ---
 
